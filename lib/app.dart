@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import 'screens/home/home_screen.dart';
-import 'screens/camera/camera_screen.dart';
-import 'screens/chat_screen.dart';
-import 'screens/preview/preview_screen.dart';
-import 'screens/analysis/analysis_loading_screen.dart';
-import 'screens/waste/waste_result_screen.dart';
-import 'theme/app_theme.dart';
+import 'package:aaclean_ai/features/home/home_screen.dart';
+import 'package:aaclean_ai/features/scanner/camera_screen.dart';
+import 'package:aaclean_ai/features/ai/chat_screen.dart';
+import 'package:aaclean_ai/features/scanner/preview_screen.dart';
+import 'package:aaclean_ai/features/scanner/analysis_loading_screen.dart';
+import 'package:aaclean_ai/features/scanner/result_screen.dart';
+import 'package:aaclean_ai/theme/app_theme.dart';
 
 class AACleanAI extends StatelessWidget {
   const AACleanAI({super.key});
