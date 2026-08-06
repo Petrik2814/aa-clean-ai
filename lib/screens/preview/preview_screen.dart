@@ -51,10 +51,8 @@ class PreviewScreen extends StatelessWidget {
                         Expanded(
                           child: ElevatedButton(
                             onPressed: () {
-                              // Placeholder for analyze action
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(content: Text('Analyzovanie... (placeholder)')),
-                              );
+                              // Start simulated analysis flow
+                              context.push('/analyze', extra: imagePath);
                             },
                             child: const Padding(
                               padding: EdgeInsets.all(12.0),
