@@ -1,6 +1,7 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+
+import 'dart:io';
 
 class PreviewScreen extends StatelessWidget {
   final String? imagePath;
@@ -34,7 +35,12 @@ class PreviewScreen extends StatelessWidget {
                       children: [
                         Expanded(
                           child: OutlinedButton(
-                            onPressed: () => Navigator.of(context).pushReplacementNamed('/camera'),
+                            onPressed: () async {
+                              // Open camera again and replace preview with new image if returned
+                              final newPath = await context.push<String>('/camera');
+                              if (!context.mounted || newPath == null) return;
+                              context.go('/preview', extra: newPath);
+                            },
                             child: const Padding(
                               padding: EdgeInsets.all(12.0),
                               child: Text('Odfotiť znova'),
@@ -68,7 +74,11 @@ class PreviewScreen extends StatelessWidget {
                     const Text('Žiadna fotografia na zobrazenie.'),
                     const SizedBox(height: 12),
                     FilledButton(
-                      onPressed: () => Navigator.of(context).pushReplacementNamed('/camera'),
+                      onPressed: () async {
+                        final newPath = await context.push<String>('/camera');
+                        if (!context.mounted || newPath == null) return;
+                        context.go('/preview', extra: newPath);
+                      },
                       child: const Text('Odfotiť'),
                     ),
                   ],
