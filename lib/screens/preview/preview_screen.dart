@@ -1,7 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-
-import 'dart:io';
 
 class PreviewScreen extends StatelessWidget {
   final String? imagePath;
@@ -36,7 +36,6 @@ class PreviewScreen extends StatelessWidget {
                         Expanded(
                           child: OutlinedButton(
                             onPressed: () async {
-                              // Open camera again and replace preview with new image if returned
                               final newPath = await context.push<String>('/camera');
                               if (!context.mounted || newPath == null) return;
                               context.go('/preview', extra: newPath);
@@ -51,8 +50,8 @@ class PreviewScreen extends StatelessWidget {
                         Expanded(
                           child: ElevatedButton(
                             onPressed: () {
-                              // Start simulated analysis flow
-                              context.push('/analyze', extra: imagePath);
+                              // Spusti loading/analyzovanie
+                              context.push('/analysis', extra: imagePath);
                             },
                             child: const Padding(
                               padding: EdgeInsets.all(12.0),
