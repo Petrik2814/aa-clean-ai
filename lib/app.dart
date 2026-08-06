@@ -1,23 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-<<<<<<< HEAD
-import 'screens/analyze/analyze_screen.dart';
-import 'screens/analyze/result_screen.dart';
-import 'screens/camera/camera_screen.dart';
-import 'screens/chat_screen.dart';
-import 'screens/home/home_screen.dart';
-import 'screens/preview/preview_screen.dart';
-import 'theme/app_theme.dart';
-=======
 import 'package:aaclean_ai/features/home/home_screen.dart';
 import 'package:aaclean_ai/features/scanner/camera_screen.dart';
 import 'package:aaclean_ai/features/ai/chat_screen.dart';
 import 'package:aaclean_ai/features/scanner/preview_screen.dart';
 import 'package:aaclean_ai/features/scanner/analysis_loading_screen.dart';
 import 'package:aaclean_ai/features/scanner/result_screen.dart';
+import 'package:aaclean_ai/features/search/waste_search_screen.dart';
 import 'package:aaclean_ai/theme/app_theme.dart';
->>>>>>> f85cb303dedc479847e0db666bd0ca4711707cfa
 
 class AACleanAI extends StatelessWidget {
   const AACleanAI({super.key});
@@ -41,10 +32,10 @@ class AACleanAI extends StatelessWidget {
         },
       ),
       GoRoute(
-        path: '/analyze',
+        path: '/analysis',
         builder: (context, state) {
           final imagePath = state.extra as String?;
-          return AnalyzeScreen(imagePath: imagePath);
+          return AnalysisLoadingScreen(imagePath: imagePath);
         },
       ),
       GoRoute(
@@ -53,6 +44,17 @@ class AACleanAI extends StatelessWidget {
           final result = state.extra as Map<String, dynamic>?;
           return WasteResultScreen(result: result);
         },
+      ),
+      GoRoute(
+        path: '/waste-result',
+        builder: (context, state) {
+          final result = state.extra as Map<String, dynamic>?;
+          return WasteResultScreen(result: result);
+        },
+      ),
+      GoRoute(
+        path: '/search',
+        builder: (context, state) => const WasteSearchScreen(),
       ),
       GoRoute(
         path: '/chat',
