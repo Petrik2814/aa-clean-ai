@@ -4,6 +4,9 @@ import 'package:go_router/go_router.dart';
 import 'screens/home/home_screen.dart';
 import 'screens/camera/camera_screen.dart';
 import 'screens/chat_screen.dart';
+import 'screens/preview/preview_screen.dart';
+import 'screens/analysis/analysis_loading_screen.dart';
+import 'screens/waste/waste_result_screen.dart';
 import 'theme/app_theme.dart';
 
 class AACleanAI extends StatelessWidget {
@@ -19,6 +22,27 @@ class AACleanAI extends StatelessWidget {
       GoRoute(
         path: '/camera',
         builder: (context, state) => const CameraScreen(),
+      ),
+      GoRoute(
+        path: '/preview',
+        builder: (context, state) {
+          final imagePath = state.extra as String?;
+          return PreviewScreen(imagePath: imagePath);
+        },
+      ),
+      GoRoute(
+        path: '/analysis',
+        builder: (context, state) {
+          final imagePath = state.extra as String?;
+          return AnalysisLoadingScreen(imagePath: imagePath);
+        },
+      ),
+      GoRoute(
+        path: '/waste-result',
+        builder: (context, state) {
+          final result = state.extra as Map<String, dynamic>?;
+          return WasteResultScreen(result: result);
+        },
       ),
       GoRoute(
         path: '/chat',
