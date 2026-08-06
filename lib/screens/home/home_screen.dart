@@ -8,7 +8,6 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final primary = AppTheme.primary;
-    final yellow = AppTheme.yellow;
 
     return Scaffold(
       appBar: AppBar(title: const Text('AA CLEAN AI')),

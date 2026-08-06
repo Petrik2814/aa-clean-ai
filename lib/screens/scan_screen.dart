@@ -19,7 +19,7 @@ class _ScanScreenState extends State<ScanScreen> {
 
   Future<void> _scan() async {
     setState(() => _isScanning = true);
-    final result = await _aiService.identifyWaste();
+    final result = await _aiService.identifyWaste('demo-image-path');
     if (!mounted) return;
     setState(() {
       _result = result;

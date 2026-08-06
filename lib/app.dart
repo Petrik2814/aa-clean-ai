@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import 'screens/home/home_screen.dart';
+import 'screens/analyze/analyze_screen.dart';
+import 'screens/analyze/result_screen.dart';
 import 'screens/camera/camera_screen.dart';
 import 'screens/chat_screen.dart';
+import 'screens/home/home_screen.dart';
 import 'screens/preview/preview_screen.dart';
-import 'screens/analysis/analysis_loading_screen.dart';
-import 'screens/waste/waste_result_screen.dart';
 import 'theme/app_theme.dart';
 
 class AACleanAI extends StatelessWidget {
   const AACleanAI({super.key});
 
-  static final _router = GoRouter(
+  static final GoRouter _router = GoRouter(
     initialLocation: '/',
     routes: [
       GoRoute(
@@ -31,14 +31,14 @@ class AACleanAI extends StatelessWidget {
         },
       ),
       GoRoute(
-        path: '/analysis',
+        path: '/analyze',
         builder: (context, state) {
           final imagePath = state.extra as String?;
-          return AnalysisLoadingScreen(imagePath: imagePath);
+          return AnalyzeScreen(imagePath: imagePath);
         },
       ),
       GoRoute(
-        path: '/waste-result',
+        path: '/analyze/result',
         builder: (context, state) {
           final result = state.extra as Map<String, dynamic>?;
           return WasteResultScreen(result: result);
