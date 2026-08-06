@@ -5,6 +5,8 @@ import 'screens/home/home_screen.dart';
 import 'screens/camera/camera_screen.dart';
 import 'screens/chat_screen.dart';
 import 'screens/preview/preview_screen.dart';
+import 'screens/analyze/analyze_screen.dart';
+import 'screens/analyze/result_screen.dart';
 import 'theme/app_theme.dart';
 
 class AACleanAI extends StatelessWidget {
@@ -26,6 +28,20 @@ class AACleanAI extends StatelessWidget {
         builder: (context, state) {
           final imagePath = state.extra as String?;
           return PreviewScreen(imagePath: imagePath);
+        },
+      ),
+      GoRoute(
+        path: '/analyze',
+        builder: (context, state) {
+          final imagePath = state.extra as String?;
+          return AnalyzeScreen(imagePath: imagePath);
+        },
+      ),
+      GoRoute(
+        path: '/analyze/result',
+        builder: (context, state) {
+          final result = state.extra as Map<String, dynamic>?;
+          return AnalyzeResultScreen(result: result);
         },
       ),
       GoRoute(
