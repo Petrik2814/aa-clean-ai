@@ -1,10 +1,9 @@
-import 'dart:convert';
-
+﻿
 import 'package:aaclean_ai/models/waste_analysis_result.dart';
 
 class BackendNotConfiguredException implements Exception {
   final String message;
-  BackendNotConfiguredException([this.message = 'AI analýza ešte nie je pripojená.']);
+  BackendNotConfiguredException([this.message = 'AI analĂ˝za eĹˇte nie je pripojenĂˇ.']);
 
   @override
   String toString() => message;
@@ -29,7 +28,7 @@ class WasteAnalysisService {
     // Simulate network latency
     await Future.delayed(const Duration(seconds: 2));
 
-    // Simulated backend JSON response — replace with real HTTP call.
+    // Simulated backend JSON response â€” replace with real HTTP call.
     final Map<String, dynamic> simulatedResponse = {
       'itemName': 'Simulated item',
       'material': 'Plastic',

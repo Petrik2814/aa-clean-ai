@@ -1,14 +1,13 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import 'package:aaclean_ai/features/home/home_screen.dart';
-import 'package:aaclean_ai/features/scanner/camera_screen.dart';
-import 'package:aaclean_ai/features/ai/chat_screen.dart';
-import 'package:aaclean_ai/features/scanner/preview_screen.dart';
-import 'package:aaclean_ai/features/scanner/analysis_loading_screen.dart';
-import 'package:aaclean_ai/features/scanner/result_screen.dart';
-import 'package:aaclean_ai/features/search/waste_search_screen.dart';
-import 'package:aaclean_ai/theme/app_theme.dart';
+import 'screens/analyze/analyze_screen.dart';
+import 'screens/analyze/result_screen.dart';
+import 'screens/camera/camera_screen.dart';
+import 'screens/chat_screen.dart';
+import 'screens/home/home_screen.dart';
+import 'screens/preview/preview_screen.dart';
+import 'theme/app_theme.dart';
 
 class AACleanAI extends StatelessWidget {
   const AACleanAI({super.key});
@@ -32,10 +31,10 @@ class AACleanAI extends StatelessWidget {
         },
       ),
       GoRoute(
-        path: '/analysis',
+        path: '/analyze',
         builder: (context, state) {
           final imagePath = state.extra as String?;
-          return AnalysisLoadingScreen(imagePath: imagePath);
+          return AnalyzeScreen(imagePath: imagePath);
         },
       ),
       GoRoute(
@@ -44,17 +43,6 @@ class AACleanAI extends StatelessWidget {
           final result = state.extra as Map<String, dynamic>?;
           return WasteResultScreen(result: result);
         },
-      ),
-      GoRoute(
-        path: '/waste-result',
-        builder: (context, state) {
-          final result = state.extra as Map<String, dynamic>?;
-          return WasteResultScreen(result: result);
-        },
-      ),
-      GoRoute(
-        path: '/search',
-        builder: (context, state) => const WasteSearchScreen(),
       ),
       GoRoute(
         path: '/chat',
