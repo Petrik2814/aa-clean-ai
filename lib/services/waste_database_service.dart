@@ -36,25 +36,32 @@ class WasteDatabaseService {
     for (final item in _items) {
       final name = _normalize(item['name'] as String? ?? '');
       int score = 0;
-      if (name == q) score += 100;
-      else if (name.contains(q)) score += 50;
+      if (name == q) {
+        score += 100;
+      } else if (name.contains(q)) {
+        score += 50;
+      }
 
       final aliases = (item['aliases'] as List<dynamic>?)
               ?.map((e) => _normalize(e as String))
               .toList() ??
           [];
       for (final a in aliases) {
-        if (a == q) score += 90;
-        else if (a.contains(q)) score += 40;
+        if (a == q) {
+          score += 90;
+        } else if (a.contains(q)) {
+          score += 40;
+        }
       }
-
       if (score > bestScore) {
         bestScore = score;
         best = Map<String, dynamic>.from(item);
       }
     }
 
-    if (bestScore <= 0) return null;
+    if (bestScore <= 0) {
+      return null;
+    }
     return best;
   }
 }
